@@ -28,7 +28,7 @@ aux_source_directory(. SRC_LIST)
 file(GLOB HEADERS_LIST "*.h" "*.hpp")
 
 add_executable(${PROJECT_NAME} ${SRC_LIST} ${HEADERS_LIST})
-
+install(drawing.txt)
 #----------------------------------------
 # Compile options
 #----------------------------------------

@@ -1,7 +1,9 @@
+#include <algorithm>
 #include <cassert>
 #include <fstream>
 #include <functional>
 #include <iostream>
+#include <iterator>
 #include <memory>
 #include <typeindex>
 #include <unordered_map>
@@ -26,6 +28,16 @@ public:
         : shape_factory_{shape_factory}
         , shape_rw_factory_{shape_rw_factory}
     {
+    }
+
+    GraphicsDoc(const GraphicsDoc & other)
+        : shape_factory_{other.shape_factory_}
+        , shape_rw_factory_{other.shape_rw_factory_}
+    {
+        std::transform(other.shapes_.begin(), other.shapes_.end(), std::back_inserter(shapes_), [](const auto & s)
+        {
+            return s->clone();
+        });
     }
 
     void add(unique_ptr<Shape> shp)
@@ -77,6 +89,12 @@ public:
             auto shape_rw = shape_rw_factory_.create(make_type_index(*shp));
             shape_rw->write(*shp, file_out);
         }
+    }
+
+    GraphicsDoc& operator=(const GraphicsDoc & other)
+    {
+
+        return *this;
     }
 };
 

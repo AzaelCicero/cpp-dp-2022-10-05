@@ -180,3 +180,5 @@ doc_en/_build/*
 # Other files
 *.pptx
 *.db
+
+OUTPUT/
