@@ -4,6 +4,7 @@
 #include <memory>
 
 #include "point.hpp"
+#include <memory>
 
 namespace Drawing
 {
@@ -11,7 +12,7 @@ namespace Drawing
     {
     public:
         virtual ~Shape() = default;
-        virtual void move(int x, int y) = 0;
+        virtual void move(int dx, int dy) = 0;
         virtual void draw() const = 0;
         
         virtual std::unique_ptr<Shape> clone() const = 0;

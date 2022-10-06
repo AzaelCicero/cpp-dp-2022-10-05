@@ -16,7 +16,6 @@ using namespace std;
 using namespace Drawing;
 using namespace Drawing::IO;
 
-// TODO - make this class copyable
 class GraphicsDoc
 {
     vector<unique_ptr<Shape>> shapes_;
